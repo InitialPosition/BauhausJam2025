@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://djm2iope86nls"]
+
+[ext_resource type="Texture2D" uid="uid://vr14d211jdw5" path="res://Assets/Sprites/Road/Bullet.png" id="1_pqha1"]
+[ext_resource type="Script" uid="uid://bvbemmoj5aau2" path="res://Scripts/SceneRoad/Bullet.gd" id="2_4u76d"]
+
+[sub_resource type="Curve" id="Curve_4u76d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_incay"]
+curve = SubResource("Curve_4u76d")
+
+[sub_resource type="Curve" id="Curve_s7rpj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.47191), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qu1r0"]
+curve = SubResource("Curve_s7rpj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1btdg"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_qu1r0")
+alpha_curve = SubResource("CurveTexture_incay")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4u76d"]
+size = Vector2(2, 2)
+
+[node name="Bullet" type="Node2D"]
+top_level = true
+script = ExtResource("2_4u76d")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_pqha1")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_1btdg")
+
+[node name="Collider_Bullet" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Bullet"]
+shape = SubResource("RectangleShape2D_4u76d")

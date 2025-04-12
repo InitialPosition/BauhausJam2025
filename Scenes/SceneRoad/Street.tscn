@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://741teimiqqf0"]
+
+[ext_resource type="Texture2D" uid="uid://gbf714458gcn" path="res://Assets/Sprites/Road/Street/Street1.png" id="1_pcvbq"]
+[ext_resource type="Texture2D" uid="uid://d150nvndft8fx" path="res://Assets/Sprites/Road/Street/Street2.png" id="2_0he2h"]
+[ext_resource type="Texture2D" uid="uid://c10xamvmijrx" path="res://Assets/Sprites/Road/Street/Street3.png" id="3_okuk1"]
+[ext_resource type="Texture2D" uid="uid://7qhx478i1mnt" path="res://Assets/Sprites/Road/Street/Street4.png" id="4_hqvnl"]
+[ext_resource type="Texture2D" uid="uid://yw34582ucrv3" path="res://Assets/Sprites/Road/Street/Street5.png" id="5_w3grr"]
+[ext_resource type="Texture2D" uid="uid://ma84cniwaaaw" path="res://Assets/Sprites/Road/Street/Street6.png" id="6_jkjq0"]
+[ext_resource type="Texture2D" uid="uid://c2etpo2yc20mg" path="res://Assets/Sprites/Road/Street/Street7.png" id="7_xy0dd"]
+[ext_resource type="Texture2D" uid="uid://dl0py5ty3pxi0" path="res://Assets/Sprites/Road/Street/Street8.png" id="8_rlyed"]
+[ext_resource type="Texture2D" uid="uid://cu8jgqmskw1sr" path="res://Assets/Sprites/Road/Street/Street9.png" id="9_qx50f"]
+[ext_resource type="Texture2D" uid="uid://dm8lg21cttfpn" path="res://Assets/Sprites/Road/Street/Street10.png" id="10_370gi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ed23k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pcvbq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0he2h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_okuk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hqvnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w3grr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jkjq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xy0dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rlyed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qx50f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_370gi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Street" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.424834
+
+[node name="Street2" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.78109
+
+[node name="Street3" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.78109
+
+[node name="Street4" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.78109
+
+[node name="Street5" type="AnimatedSprite2D" parent="."]
+position = Vector2(144, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.78109
+
+[node name="Street6" type="AnimatedSprite2D" parent="."]
+position = Vector2(176, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.78109
+
+[node name="Street7" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.424834
+
+[node name="Street8" type="AnimatedSprite2D" parent="."]
+position = Vector2(208, 76)
+sprite_frames = SubResource("SpriteFrames_ed23k")
+autoplay = "default"
+frame_progress = 0.424834

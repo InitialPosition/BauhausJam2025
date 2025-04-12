@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://dj5c0k21x4njc"]
+
+[ext_resource type="Script" uid="uid://djolx0hlrulrt" path="res://Scripts/SceneRoad/EnemyCar.gd" id="1_hu32a"]
+[ext_resource type="Texture2D" uid="uid://d2kyrtgous3sq" path="res://Assets/Sprites/Road/EnemyCar/EnemyCar1.png" id="2_f56s3"]
+[ext_resource type="Texture2D" uid="uid://b5tr0uo07yqbj" path="res://Assets/Sprites/Road/EnemyCar/EnemyCar2.png" id="3_aff0e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pctf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f56s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aff0e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_bb876"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.337079), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_doe2q"]
+curve = SubResource("Curve_bb876")
+
+[sub_resource type="Gradient" id="Gradient_vcsfq"]
+offsets = PackedFloat32Array(0.0181818, 0.781818, 1)
+colors = PackedColorArray(0.240545, 0.377986, 0.143049, 1, 0.167496, 0.594721, 0.66253, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bb876"]
+gradient = SubResource("Gradient_vcsfq")
+
+[sub_resource type="Curve" id="Curve_vcsfq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.292135), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bb876"]
+curve = SubResource("Curve_vcsfq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vcsfq"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 10.301
+initial_velocity_min = 70.0
+initial_velocity_max = 109.2
+gravity = Vector3(0, -90, 0)
+radial_accel_min = -100.0
+radial_accel_max = -55.17
+damping_min = 32.184
+damping_max = 42.529
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_bb876")
+color_ramp = SubResource("GradientTexture1D_bb876")
+alpha_curve = SubResource("CurveTexture_doe2q")
+
+[node name="EnemyCar" type="Node2D"]
+script = ExtResource("1_hu32a")
+
+[node name="Animation_Car" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pctf7")
+autoplay = "default"
+frame_progress = 0.906132
+
+[node name="Particles_Exhaust" type="GPUParticles2D" parent="Animation_Car"]
+position = Vector2(-15, 5)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_vcsfq")
+
+[node name="Collider_EnemyCar" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider_EnemyCar"]
+polygon = PackedVector2Array(-15, -1, -15, 6, 15, 6, 15, 5, 16, 5, 16, 1, 14, 1, 14, 0, 10, 0, 10, -1, 8, -1, 8, -2, 7, -2, 7, -3, 6, -3, 6, -4, 5, -4, 5, -5, -8, -5, -8, -4, -9, -4, -9, -3, -10, -3, -10, -1)
