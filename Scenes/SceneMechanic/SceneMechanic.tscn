@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b27uq4ai00a8c"]
+
+[ext_resource type="Texture2D" uid="uid://og1q2dqkwd7o" path="res://Assets/Sprites/Road/Duck/Duck1.png" id="1_4b354"]
+
+[node name="SceneMechanic" type="Node2D"]
+
+[node name="Duck1" type="Sprite2D" parent="."]
+position = Vector2(112, 75)
+scale = Vector2(20, 23.1667)
+texture = ExtResource("1_4b354")

@@ -58,6 +58,8 @@ func _ready() -> void:
 	shoot_timer.start(3.0)
 
 func set_target_position(new_pos: Vector2):
+	# flip sprite if going other way
+	animation_heli.flip_h = new_pos.x < global_position.x
 	target_position = new_pos
 
 func generate_new_target_position() -> Vector2:

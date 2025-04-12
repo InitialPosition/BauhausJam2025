@@ -10,7 +10,7 @@ var hp_display: AnimatedSprite2D
 var progress_start: float
 
 var current_stage_progress: float = 0.0
-var stage_progress_speed: float = 1.0
+var stage_progress_speed: float = 10.0
 var progress_length: float
 
 var splash_timer: Timer
@@ -58,12 +58,13 @@ func _hide_splash():
 	$Label_StartMessage.visible = false
 
 func _process(delta: float) -> void:
-	current_stage_progress += stage_progress_speed * delta
-	if current_stage_progress > 100:
+	if current_stage_progress >= 100:
 		SignalEmitter.road_game_complete.emit()
-
+		if not Fade.is_fading:
+			Fade.change_scene('res://Scenes/SceneMechanic/SceneMechanic.tscn', 0.1)
 		current_stage_progress = 100
-		pass
+	else:
+		current_stage_progress += stage_progress_speed * delta
 	
 	progress_indicator_head.global_position.x = (progress_length / 100 * current_stage_progress) + progress_start
 

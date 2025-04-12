@@ -24,6 +24,7 @@ SignalEmitter="*res://Scripts/SignalEmitter.gd"
 Util="*res://Scripts/Util.gd"
 ConfigValues="*res://Scripts/ConfigValues.gd"
 GameManager="*res://Scripts/GameManager.gd"
+Fade="*res://Scenes/Fade.tscn"
 
 [display]
 
