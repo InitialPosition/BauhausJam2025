@@ -12,3 +12,7 @@ signal enemy_defeated(score: int)
 
 signal player_moved(new_pos: Vector2)
 signal player_hit
+
+signal road_game_complete
+
+signal money_collected

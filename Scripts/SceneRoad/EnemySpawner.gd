@@ -19,6 +19,10 @@ const HELI_SPAWN_LOCATIONS: Array[Vector2] = [
 var MAX_HELIS: int = GameManager.MAX_HELIS_PER_STAGE[GameManager.current_stage] if GameManager.current_stage <= 4 else GameManager.current_stage - 2
 var current_helis: int = 0
 
+var Money: Resource = preload('res://Scenes/SceneRoad/Money.tscn')
+var money_timer: Timer
+var money_speed: float = 10.0
+
 func _ready() -> void:
 	timer_spawn_car = Timer.new()
 	add_child(timer_spawn_car)
@@ -31,6 +35,12 @@ func _ready() -> void:
 
 	timer_spawn_heli.timeout.connect(_spawn_enemy_heli)
 	timer_spawn_heli.start(15.0)
+
+	money_timer = Timer.new()
+	add_child(money_timer)
+
+	money_timer.timeout.connect(_on_money_timer_done)
+	money_timer.start(money_speed)
 
 	SignalEmitter.enemy_defeated.connect(_on_enemy_defeated)
 
@@ -67,6 +77,12 @@ func _spawn_enemy_heli():
 	new_heli.global_position = spawn_location
 
 	current_helis += 1
+
+func _on_money_timer_done():
+	var new_money = Money.instantiate()
+	add_child(new_money)
+
+	new_money.global_position = Vector2(212, randf_range(55.0, 103.0))
 
 func _on_enemy_defeated(other):
 	match other:

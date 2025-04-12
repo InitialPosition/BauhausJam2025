@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4j72hwi6ddww"]
+[gd_scene load_steps=12 format=3 uid="uid://b4j72hwi6ddww"]
 
 [ext_resource type="PackedScene" uid="uid://741teimiqqf0" path="res://Scenes/SceneRoad/Street.tscn" id="1_35on0"]
 [ext_resource type="PackedScene" uid="uid://60u1vsuvb7ol" path="res://Scenes/SceneRoad/Road_GUI.tscn" id="1_gpabo"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" uid="uid://ccn2c421alkw8" path="res://Scripts/Crosshair.gd" id="5_gugwa"]
 [ext_resource type="Script" uid="uid://bvai11vfpuauq" path="res://Scripts/CameraController.gd" id="6_gugwa"]
 [ext_resource type="PackedScene" uid="uid://cy7t66mlrxxb6" path="res://Scenes/SceneRoad/EnemySpawner.tscn" id="7_gpabo"]
+
+[sub_resource type="Gradient" id="Gradient_gpabo"]
+colors = PackedColorArray(0.704742, 0.00111856, 0.816453, 1, 1, 0.625568, 0.217406, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p2loc"]
+gradient = SubResource("Gradient_gpabo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsaec"]
 shader = ExtResource("3_q2v8d")
@@ -39,13 +45,13 @@ shader_parameter/vignette_opacity = 0.5
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gpabo")]
 
+[node name="RoadGui" parent="." instance=ExtResource("1_gpabo")]
+
 [node name="DuckCar" parent="." instance=ExtResource("2_8w0xf")]
 position = Vector2(34, 92)
 
-[node name="RoadGui" parent="." instance=ExtResource("1_gpabo")]
-
 [node name="Crosshair" parent="." instance=ExtResource("4_q2v8d")]
-position = Vector2(-5, 4)
+position = Vector2(95, 33)
 script = ExtResource("5_gugwa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -53,6 +59,12 @@ position = Vector2(96, 54)
 ignore_rotation = false
 rotation_smoothing_enabled = true
 script = ExtResource("6_gugwa")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(95.5, 53)
+scale = Vector2(3.17188, 1.90625)
+energy = 0.2
+texture = SubResource("GradientTexture2D_p2loc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_fsaec")

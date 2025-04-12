@@ -16,7 +16,7 @@ const HIT_FLICKER_LENGTH: float = 0.05
 var new_position_timer: Timer
 var new_position_duration: float
 
-const CAR_SPEED: float = 20.0
+const CAR_SPEED: float = 75.0
 
 var CAR_X_BOUNDARIES: Vector2 = Vector2(15, DisplayServer.window_get_size().x / ConfigValues.screen_scale - 15)
 var CAR_Y_BOUNDARIES: Vector2 = Vector2(48, DisplayServer.window_get_size().y / ConfigValues.screen_scale - 25)
@@ -90,8 +90,11 @@ func _timer_shoot_bullet():
 	new_bullet.shot_parent = 'Collider_EnemyCar'
 
 	# calculate path to player and shoot
-	var shoot_direction = GameManager.saved_player_position - new_bullet.global_position
-	new_bullet.movement_vector = shoot_direction.normalized()
+	var shoot_direction: Vector2 = GameManager.saved_player_position - new_bullet.global_position
+	var shot_randomness: float = 0.5
+	shoot_direction += Vector2(randf_range(-shot_randomness, shot_randomness), randf_range(-shot_randomness, shot_randomness))
+	shoot_direction = shoot_direction.normalized()
+	new_bullet.movement_vector = shoot_direction
 	
 	shoot_cooldown = randf_range(5.0, 12.0)
 	shoot_timer.start(shoot_cooldown)
@@ -107,8 +110,8 @@ func _on_car_frame_changed() -> void:
 
 func _process(delta: float) -> void:
 	if global_position != target_position:
-		global_position.x = move_toward(global_position.x, target_position.x, max(1, delta * CAR_SPEED))
-		global_position.y = move_toward(global_position.y, target_position.y, max(1, delta * CAR_SPEED))
+		global_position.x = move_toward(global_position.x, target_position.x, delta * CAR_SPEED)
+		global_position.y = move_toward(global_position.y, target_position.y, delta * CAR_SPEED)
 
 func _on_area_enter(other: Area2D):
 	match other.name:

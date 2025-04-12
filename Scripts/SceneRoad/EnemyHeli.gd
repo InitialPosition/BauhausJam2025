@@ -15,7 +15,7 @@ const HIT_FLICKER_LENGTH: float = 0.05
 var new_position_timer: Timer
 var new_position_duration: float
 
-const CAR_SPEED: float = 20.0
+const CAR_SPEED: float = 75.0
 
 var CAR_X_BOUNDARIES: Vector2 = Vector2(15, DisplayServer.window_get_size().x / ConfigValues.screen_scale - 15)
 var CAR_Y_BOUNDARIES: Vector2 = Vector2(8, (DisplayServer.window_get_size().y / ConfigValues.screen_scale) / 2 - 16)
@@ -93,8 +93,8 @@ func _timer_shoot_bullet():
 
 func _process(delta: float) -> void:
 	if global_position != target_position:
-		global_position.x = move_toward(global_position.x, target_position.x, max(1, delta * CAR_SPEED))
-		global_position.y = move_toward(global_position.y, target_position.y, max(1, delta * CAR_SPEED))
+		global_position.x = move_toward(global_position.x, target_position.x, delta * CAR_SPEED)
+		global_position.y = move_toward(global_position.y, target_position.y, delta * CAR_SPEED)
 
 func _on_area_enter(other: Area2D):
 	match other.name:

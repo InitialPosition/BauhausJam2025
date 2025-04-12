@@ -1,12 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://60u1vsuvb7ol"]
+[gd_scene load_steps=14 format=3 uid="uid://60u1vsuvb7ol"]
 
 [ext_resource type="Script" uid="uid://dtwos72mqf8bl" path="res://Scripts/SceneRoad/RoadGUI.gd" id="1_56paw"]
 [ext_resource type="FontFile" uid="uid://bb8tqj53jljn3" path="res://Fonts/EnterCommand.ttf" id="1_x3858"]
 [ext_resource type="Texture2D" uid="uid://og1q2dqkwd7o" path="res://Assets/Sprites/Road/Duck/Duck1.png" id="3_ylave"]
+[ext_resource type="Texture2D" uid="uid://dyqwoddg6jtim" path="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator1.png" id="4_otwcc"]
+[ext_resource type="Texture2D" uid="uid://cy6v3pov7ogrn" path="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator2.png" id="5_tgbh2"]
+[ext_resource type="Texture2D" uid="uid://b1252vc2nqf6e" path="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator3.png" id="6_qldmn"]
+[ext_resource type="Texture2D" uid="uid://ko00k5inpi0q" path="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator4.png" id="7_oe5jv"]
+[ext_resource type="Texture2D" uid="uid://435geg0n6nn0" path="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator5.png" id="8_0qlmw"]
+[ext_resource type="Texture2D" uid="uid://dbv7q13usvnea" path="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator6.png" id="9_2yh57"]
+[ext_resource type="Texture2D" uid="uid://cxddsx42uiw36" path="res://Assets/Sprites/Road/Money.png" id="10_tgbh2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2uspk"]
 font = ExtResource("1_x3858")
 font_color = Color(0.97826, 0.504554, 0.70037, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ylave"]
+font = ExtResource("1_x3858")
+font_color = Color(0.8, 0.184314, 0.482353, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2yxoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_2yh57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0qlmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oe5jv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qldmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tgbh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_otwcc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="RoadGui" type="Control"]
 layout_mode = 3
@@ -17,25 +54,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_56paw")
 
-[node name="Label_Stage" type="Label" parent="."]
-visible = false
+[node name="Label_Money" type="Label" parent="."]
 layout_mode = 2
-offset_left = 151.0
+offset_left = 24.0
 offset_top = 2.0
-offset_right = 190.0
+offset_right = 63.0
 offset_bottom = 16.0
-text = "STAGE 1"
+text = "0"
 label_settings = SubResource("LabelSettings_2uspk")
-horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label_Score" type="Label" parent="."]
+visible = false
 layout_mode = 2
-offset_left = 2.0
-offset_top = 10.0
-offset_right = 194.0
-offset_bottom = 24.0
-text = "SCORE 00000"
+offset_left = 59.0
+offset_top = 12.0
+offset_right = 140.0
+offset_bottom = 26.0
+text = "SCORE 0"
 label_settings = SubResource("LabelSettings_2uspk")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -48,3 +84,23 @@ default_color = Color(0.708548, 0.328542, 0.66824, 1)
 [node name="ProgressIndicator_Head" type="Sprite2D" parent="."]
 position = Vector2(64, 9)
 texture = ExtResource("3_ylave")
+
+[node name="Label_StartMessage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 159.0
+offset_bottom = 97.0
+text = "[SPLASH]"
+label_settings = SubResource("LabelSettings_ylave")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HealthDisplay" type="AnimatedSprite2D" parent="."]
+position = Vector2(164, 8)
+sprite_frames = SubResource("SpriteFrames_2yxoc")
+
+[node name="Money" type="Sprite2D" parent="."]
+position = Vector2(10, 9)
+texture = ExtResource("10_tgbh2")

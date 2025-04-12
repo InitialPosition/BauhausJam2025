@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 
 func _on_area_enter(other):
 	# ignore player bullets for the player
-	if other.name == shot_parent or other.name == 'Collider_Bullet_Enemy':
+	if other.name == shot_parent or other.name == 'Collider_Bullet_Enemy' or other.name == 'Collider_Money' or other.name == 'Collider_Bullet':
 		return
 	
 	queue_free()

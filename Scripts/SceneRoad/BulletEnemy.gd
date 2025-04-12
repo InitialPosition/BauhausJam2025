@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 func _on_area_enter(other):
 	print(other.name)
 	# enemy bullets ignore other enemies
-	if other.name == 'Collider_EnemyCar' or other.name == 'Collider_EnemyHeli' or other.name == 'Collider_Bullet':
+	if other.name == 'Collider_EnemyCar' or other.name == 'Collider_EnemyHeli' or other.name == 'Collider_Bullet' or other.name == 'Collider_Money':
 		return
 	
 	SignalEmitter.player_hit.emit()

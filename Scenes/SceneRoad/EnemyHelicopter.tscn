@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvcwypo5sh38"]
 
 [ext_resource type="Script" uid="uid://ct52vcooi1eil" path="res://Scripts/SceneRoad/EnemyHeli.gd" id="1_50b5w"]
-[ext_resource type="Texture2D" uid="uid://cwle1jgkrfq7i" path="res://Assets/Sprites/Road/helicopter1.png" id="2_50b5w"]
-[ext_resource type="Texture2D" uid="uid://d1xh6v08ytp1o" path="res://Assets/Sprites/Road/helicopter2.png" id="3_uemwk"]
+[ext_resource type="Texture2D" uid="uid://cwle1jgkrfq7i" path="res://Assets/Sprites/Road/Helicopter/helicopter1.png" id="2_50b5w"]
+[ext_resource type="Texture2D" uid="uid://d1xh6v08ytp1o" path="res://Assets/Sprites/Road/Helicopter/helicopter2.png" id="3_uemwk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n5x08"]
 animations = [{

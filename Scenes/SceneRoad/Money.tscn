@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cer8sil670c76"]
+
+[ext_resource type="Texture2D" uid="uid://cxddsx42uiw36" path="res://Assets/Sprites/Road/Money.png" id="1_6ohlc"]
+[ext_resource type="Script" uid="uid://u1bop3t0xro6" path="res://Scripts/SceneRoad/Money.gd" id="1_bn0st"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn0st"]
+size = Vector2(10.9973, 9.74109)
+
+[node name="Money" type="Node2D"]
+script = ExtResource("1_bn0st")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ohlc")
+
+[node name="Collider_Money" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_Money"]
+position = Vector2(0.529, 0.492)
+scale = Vector2(1.162, 0.954)
+shape = SubResource("RectangleShape2D_bn0st")

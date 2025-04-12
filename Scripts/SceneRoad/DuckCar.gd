@@ -15,12 +15,12 @@ var particles_exhaust_start_y: float
 # (we could do this using sprite.position.y, but this is a game jam)
 const ANIM_OFFSET: int = 1
 
-const CAR_MAX_SPEED: float = 2.0
-const CAR_ACCEL: float = 0.3
-const CAR_ACCEL_TURNING: float = 1.5
-const CAR_ACCEL_BREAKING: float = 0.3
+const CAR_MAX_SPEED: float = 125.0
+const CAR_ACCEL: float = 18.75
+const CAR_ACCEL_TURNING: float = 93.75
+const CAR_ACCEL_BREAKING: float = 18.75
 
-var CAR_X_BOUNDARIES: Vector2 = Vector2(15, DisplayServer.window_get_size().x / ConfigValues.screen_scale - 15)
+var CAR_X_BOUNDARIES: Vector2 = Vector2(16, DisplayServer.window_get_size().x / ConfigValues.screen_scale - 15)
 var CAR_Y_BOUNDARIES: Vector2 = Vector2(48, DisplayServer.window_get_size().y / ConfigValues.screen_scale - 8)
 
 # holds the calculated movement for the current frame
@@ -84,29 +84,29 @@ func _process(delta: float) -> void:
 
 		var current_h_speed: float = horizontal_movement * delta
 		current_speed_change = CAR_ACCEL
-		current_target_speed = CAR_MAX_SPEED * sign(horizontal_movement)
+		current_target_speed = CAR_MAX_SPEED * sign(horizontal_movement) * delta
 
 		if current_h_speed > 0 and current_movement.x < 0 or current_h_speed < 0 and current_movement.x > 0:
 			current_speed_change = CAR_ACCEL_TURNING
 			current_target_speed = 0
 
-		current_movement.x = move_toward(current_movement.x, current_target_speed, current_speed_change)
+		current_movement.x = move_toward(current_movement.x, current_target_speed, current_speed_change * delta)
 	else:
 		animation_car.play('default')
-		current_movement.x = move_toward(current_movement.x, 0, CAR_ACCEL_BREAKING)
+		current_movement.x = move_toward(current_movement.x, 0, CAR_ACCEL_BREAKING * delta)
 	
 	if vertical_movement:
 		var current_v_speed: float = vertical_movement * delta
 		current_speed_change = CAR_ACCEL
-		current_target_speed = CAR_MAX_SPEED * sign(vertical_movement)
+		current_target_speed = CAR_MAX_SPEED * sign(vertical_movement) * delta
 
 		if current_v_speed > 0 and current_movement.y < 0 or current_v_speed < 0 and current_movement.y > 0:
 			current_speed_change = CAR_ACCEL_TURNING
 			current_target_speed = 0
 
-		current_movement.y = move_toward(current_movement.y, current_target_speed, current_speed_change)
+		current_movement.y = move_toward(current_movement.y, current_target_speed, current_speed_change * delta)
 	else:
-		current_movement.y = move_toward(current_movement.y, 0, CAR_ACCEL_BREAKING)
+		current_movement.y = move_toward(current_movement.y, 0, CAR_ACCEL_BREAKING * delta)
 	
 	# clamp max speed
 	if current_movement.x > CAR_MAX_SPEED:
@@ -116,18 +116,22 @@ func _process(delta: float) -> void:
 	
 	# stop at boundaries
 	if current_movement.x < 0:
-		if global_position.x - current_movement.x < CAR_X_BOUNDARIES.x:
+		if global_position.x + current_movement.x < CAR_X_BOUNDARIES.x:
 			current_movement.x = 0
+			global_position.x = CAR_X_BOUNDARIES.x
 	elif current_movement.x > 0:
 		if global_position.x + current_movement.x > CAR_X_BOUNDARIES.y:
 			current_movement.x = 0
+			global_position.x = CAR_X_BOUNDARIES.y
 	
 	if current_movement.y < 0:
-		if global_position.y - current_movement.y < CAR_Y_BOUNDARIES.x:
+		if global_position.y + current_movement.y < CAR_Y_BOUNDARIES.x:
 			current_movement.y = 0
+			global_position.y = CAR_Y_BOUNDARIES.x
 	elif current_movement.y > 0:
 		if global_position.y + current_movement.y > CAR_Y_BOUNDARIES.y:
 			current_movement.y = 0
+			global_position.y = CAR_Y_BOUNDARIES.y
 	
 	SignalEmitter.player_moved.emit(global_position)
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1xh6v08ytp1o"
-path="res://.godot/imported/helicopter2.png-596747ee585e250b2a7319082014155a.ctex"
+uid="uid://dyqwoddg6jtim"
+path="res://.godot/imported/HealthIndicator1.png-cbee38d88088886bbe215778d33d3634.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Road/helicopter2.png"
-dest_files=["res://.godot/imported/helicopter2.png-596747ee585e250b2a7319082014155a.ctex"]
+source_file="res://Assets/Sprites/Road/HealthIndicator/HealthIndicator1.png"
+dest_files=["res://.godot/imported/HealthIndicator1.png-cbee38d88088886bbe215778d33d3634.ctex"]
 
 [params]
 
