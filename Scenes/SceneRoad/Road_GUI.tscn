@@ -85,6 +85,13 @@ default_color = Color(0.708548, 0.328542, 0.66824, 1)
 position = Vector2(64, 9)
 texture = ExtResource("3_ylave")
 
+[node name="Label_StartMessage_BG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 192.0
+offset_bottom = 81.0
+color = Color(0, 0, 0, 0.470588)
+
 [node name="Label_StartMessage" type="Label" parent="."]
 layout_mode = 0
 offset_left = 39.0

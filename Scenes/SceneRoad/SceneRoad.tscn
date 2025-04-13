@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4j72hwi6ddww"]
+[gd_scene load_steps=10 format=3 uid="uid://b4j72hwi6ddww"]
 
 [ext_resource type="PackedScene" uid="uid://741teimiqqf0" path="res://Scenes/SceneRoad/Street.tscn" id="1_35on0"]
 [ext_resource type="PackedScene" uid="uid://60u1vsuvb7ol" path="res://Scenes/SceneRoad/Road_GUI.tscn" id="1_gpabo"]
 [ext_resource type="PackedScene" uid="uid://d4fs8kc2gskuv" path="res://Scenes/SceneRoad/DuckCar.tscn" id="2_8w0xf"]
-[ext_resource type="Shader" uid="uid://dl8c3bab5nrkw" path="res://Shaders/CRT.gdshader" id="3_q2v8d"]
 [ext_resource type="PackedScene" uid="uid://ccle3ei61ptmr" path="res://Scenes/Crosshair.tscn" id="4_q2v8d"]
 [ext_resource type="Script" uid="uid://ccn2c421alkw8" path="res://Scripts/Crosshair.gd" id="5_gugwa"]
 [ext_resource type="Script" uid="uid://bvai11vfpuauq" path="res://Scripts/CameraController.gd" id="6_gugwa"]
@@ -15,35 +14,12 @@ colors = PackedColorArray(0.704742, 0.00111856, 0.816453, 1, 1, 0.625568, 0.2174
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p2loc"]
 gradient = SubResource("Gradient_gpabo")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsaec"]
-shader = ExtResource("3_q2v8d")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0
-shader_parameter/scanlines_width = 0.0
-shader_parameter/grille_opacity = 0.0
-shader_parameter/resolution = Vector2(1920, 1080)
-shader_parameter/pixelate = true
-shader_parameter/roll = true
-shader_parameter/roll_speed = 0.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.0
-shader_parameter/noise_opacity = 0.096
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.026
-shader_parameter/aberration = 0.00800005
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = false
-shader_parameter/warp_amount = 0.056
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
-
 [node name="SceneRoad" type="Node2D"]
 
 [node name="Street" parent="." instance=ExtResource("1_35on0")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gpabo")]
+y_sort_enabled = true
 
 [node name="RoadGui" parent="." instance=ExtResource("1_gpabo")]
 
@@ -65,15 +41,3 @@ position = Vector2(95.5, 53)
 scale = Vector2(3.17188, 1.90625)
 energy = 0.2
 texture = SubResource("GradientTexture2D_p2loc")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_fsaec")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -6.0
-offset_right = 196.0
-offset_bottom = 113.0
-grow_horizontal = 2
-grow_vertical = 2

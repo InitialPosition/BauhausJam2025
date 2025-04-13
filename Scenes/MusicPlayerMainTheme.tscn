@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd15gja5g7632"]
+
+[ext_resource type="AudioStream" uid="uid://c8vd5qyfadupe" path="res://Assets/Music/MainTheme.mp3" id="1_7eim6"]
+
+[node name="MusicPlayerMainTheme" type="AudioStreamPlayer"]
+stream = ExtResource("1_7eim6")
+volume_db = -15.848

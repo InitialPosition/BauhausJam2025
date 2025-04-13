@@ -58,6 +58,9 @@ func _process(_delta: float) -> void:
 			frame = 0
 
 func _on_bullet_timer_timeout():
+	$AudioShoot.pitch_scale = randf_range(0.9, 1.1)
+	$AudioShoot.play()
+	
 	var new_bullet = Bullet.instantiate()
 	add_child(new_bullet)
 
@@ -66,10 +69,13 @@ func _on_bullet_timer_timeout():
 	new_bullet.shot_parent = 'Collider_DuckCar'
 
 	# generate bullet vector
-	var bullet_movement: Vector2 = current_bullet_vector
+	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
+	var bullet_movement: Vector2 = mouse_pos - global_position
+	bullet_movement = bullet_movement.normalized()
+	
 	bullet_movement.x += randf_range(-current_bullet_spread.x, current_bullet_spread.x)
 	bullet_movement.y += randf_range(-current_bullet_spread.y, current_bullet_spread.y)
-	bullet_movement = bullet_movement.normalized()
+	
 	new_bullet.movement_vector = bullet_movement
 
 	SignalEmitter.bullet_fired.emit()

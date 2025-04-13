@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccle3ei61ptmr"]
 
-[ext_resource type="Texture2D" uid="uid://ccw8ao6lsbtqs" path="res://Assets/Crosshair.png" id="1_yta86"]
+[ext_resource type="Texture2D" uid="uid://bropqmt1rh8r0" path="res://Assets/Crosshair.png" id="1_yta86"]
 
 [node name="Crosshair" type="Node2D"]
 

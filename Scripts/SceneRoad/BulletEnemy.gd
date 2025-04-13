@@ -26,7 +26,10 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_area_enter(other):
-	print(other.name)
+	# if fading, ignore damage
+	if Fade.is_fading:
+		return
+		
 	# enemy bullets ignore other enemies
 	if other.name == 'Collider_EnemyCar' or other.name == 'Collider_EnemyHeli' or other.name == 'Collider_Bullet' or other.name == 'Collider_Money':
 		return

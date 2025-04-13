@@ -83,6 +83,9 @@ func _timer_move_to_new_position():
 	move_to_new_position()
 
 func _timer_shoot_bullet():
+	$CarShoot.pitch_scale = randf_range(0.9, 1.1)
+	$CarShoot.play()
+
 	var new_bullet = Bullet.instantiate()
 	add_child(new_bullet)
 
@@ -118,6 +121,9 @@ func _on_area_enter(other: Area2D):
 		'Collider_Bullet':
 			visible = false
 			flicker_timer.start(HIT_FLICKER_LENGTH)
+
+			$CarHit.pitch_scale = randf_range(0.9, 1.1)
+			$CarHit.play()
 
 			hitpoints -= 1
 

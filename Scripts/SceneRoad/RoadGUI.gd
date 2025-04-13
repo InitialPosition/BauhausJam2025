@@ -10,7 +10,7 @@ var hp_display: AnimatedSprite2D
 var progress_start: float
 
 var current_stage_progress: float = 0.0
-var stage_progress_speed: float = 10.0
+var stage_progress_speed: float = 1.5
 var progress_length: float
 
 var splash_timer: Timer
@@ -33,7 +33,7 @@ func _ready() -> void:
 	progress_indicator_line = $ProgressIndicator_Line
 	hp_display = $HealthDisplay
 
-	hp_display.frame = 5
+	hp_display.frame = GameManager.current_hp
 
 	progress_start = progress_indicator_head.global_position.x
 
@@ -44,7 +44,9 @@ func _ready() -> void:
 
 	progress_length = progress_indicator_line.points[0].x - progress_indicator_line.points[1].x
 
-	$Label_StartMessage.text = SPLASH_MESSAGES.pick_random()
+	$Label_StartMessage.text = 'STAGE ' + str(GameManager.current_stage) + '\n' + SPLASH_MESSAGES.pick_random()
+	$Label_StartMessage_BG.visible = true
+
 	splash_timer = Timer.new()
 	add_child(splash_timer)
 	splash_timer.one_shot = true
@@ -56,12 +58,20 @@ func _ready() -> void:
 
 func _hide_splash():
 	$Label_StartMessage.visible = false
+	$Label_StartMessage_BG.visible = false
 
 func _process(delta: float) -> void:
 	if current_stage_progress >= 100:
+
+		var next_scene: String
+		if GameManager.current_stage % 2 == 0:
+			next_scene = 'res://Scenes/SceneShadyTrader/SceneShady.tscn'
+		else:
+			next_scene = 'res://Scenes/SceneMechanic/SceneMechanic.tscn'
+			
 		SignalEmitter.road_game_complete.emit()
 		if not Fade.is_fading:
-			Fade.change_scene('res://Scenes/SceneMechanic/SceneMechanic.tscn', 0.1)
+			Fade.change_scene(next_scene, 0.01)
 		current_stage_progress = 100
 	else:
 		current_stage_progress += stage_progress_speed * delta
@@ -75,8 +85,12 @@ func _on_player_hit():
 	hp_display.frame = GameManager.current_hp
 
 	if GameManager.current_hp == 0:
-		$Label_StartMessage.text = "GAME OVER"
-		$Label_StartMessage.visible = true
+		#$Label_StartMessage.text = "GAME OVER"
+		#$Label_StartMessage.visible = true
+		#$Label_StartMessage_BG.visible = true
+
+		if not Fade.is_fading:
+			Fade.change_scene('res://Scenes/SceneMechanic/SceneMechanic.tscn', 0.01)
 
 func _on_money_collected():
 	GameManager.current_money += 1

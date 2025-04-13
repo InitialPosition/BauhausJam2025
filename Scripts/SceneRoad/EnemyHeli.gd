@@ -90,7 +90,7 @@ func _timer_shoot_bullet():
 	var shoot_direction = GameManager.saved_player_position - new_bullet.global_position
 	new_bullet.movement_vector = shoot_direction.normalized()
 	
-	shoot_cooldown = randf_range(4.0, 7.0)
+	shoot_cooldown = randf_range(2.0, 6.0)
 	shoot_timer.start(shoot_cooldown)
 
 func _process(delta: float) -> void:

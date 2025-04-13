@@ -14,7 +14,7 @@ func _ready() -> void:
 	current_scale -= 4
 	ConfigValues.screen_scale = current_scale
 
-	var new_window_dimensions = window_dimensions * current_scale	
+	var new_window_dimensions = window_dimensions * current_scale
 	Util.set_window_resolution(new_window_dimensions.x, new_window_dimensions.y)
 
 	# Util.set_window_fullscreen(true)
@@ -23,4 +23,4 @@ func _ready() -> void:
 
 
 func start_game():
-	get_tree().change_scene_to_file('res://Scenes/SceneRoad/SceneRoad.tscn')
+	get_tree().change_scene_to_file('res://Scenes/SceneMenu.tscn')

@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://d6qsfxmmgkkk"]
+
+[ext_resource type="Script" uid="uid://cvgxhx8eg14p7" path="res://Scripts/Mechanic/ShadyTradeController.gd" id="1_eq584"]
+[ext_resource type="FontFile" uid="uid://bb8tqj53jljn3" path="res://Fonts/EnterCommand.ttf" id="2_cs1vc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fi13"]
+line_spacing = -3.0
+font = ExtResource("2_cs1vc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4b354"]
+line_spacing = -3.0
+font = ExtResource("2_cs1vc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgafh"]
+line_spacing = -3.0
+font = ExtResource("2_cs1vc")
+
+[node name="SceneShady" type="Node2D"]
+script = ExtResource("1_eq584")
+max_selection = 2
+
+[node name="ShopTitle" type="Label" parent="."]
+offset_left = 3.0
+offset_right = 74.0
+offset_bottom = 23.0
+text = "SHADY TRADER"
+label_settings = SubResource("LabelSettings_7fi13")
+
+[node name="CurrentStats" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 11.0
+offset_right = 65.0
+offset_bottom = 34.0
+text = "Car Stats"
+label_settings = SubResource("LabelSettings_7fi13")
+
+[node name="ShopItems" type="Label" parent="."]
+offset_left = 80.0
+offset_right = 189.0
+offset_bottom = 48.0
+text = "Repair car (5$)
+Better motor (15$)
+Leave shop"
+label_settings = SubResource("LabelSettings_4b354")
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 64.0
+offset_right = 189.0
+offset_bottom = 106.0
+text = "\"If you have the money, I can help you out.\""
+label_settings = SubResource("LabelSettings_fgafh")
+autowrap_mode = 2
+
+[node name="ProgressIndicator_Line" type="Line2D" parent="."]
+points = PackedVector2Array(5, 60, 187, 60)
+width = 1.0

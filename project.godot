@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="DUCK AROUND AND FIND OUT"
+config/version="1.0.1"
 run/main_scene="res://Scenes/INIT_SCENE.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="uid://dq660ds7ikdnv"
 
 [autoload]
 
@@ -25,6 +26,8 @@ Util="*res://Scripts/Util.gd"
 ConfigValues="*res://Scripts/ConfigValues.gd"
 GameManager="*res://Scripts/GameManager.gd"
 Fade="*res://Scenes/Fade.tscn"
+MusicPlayerMainTheme="*res://Scenes/MusicPlayerMainTheme.tscn"
+MusicPlayerMainMenu="*res://Scenes/MusicPlayerMainMenu.tscn"
 
 [display]
 
@@ -63,5 +66,6 @@ car_right={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.309804, 0.113725, 0.298039, 1)
 2d/snap/snap_2d_transforms_to_pixel=true

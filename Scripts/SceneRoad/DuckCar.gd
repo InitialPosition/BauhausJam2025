@@ -15,7 +15,7 @@ var particles_exhaust_start_y: float
 # (we could do this using sprite.position.y, but this is a game jam)
 const ANIM_OFFSET: int = 1
 
-const CAR_MAX_SPEED: float = 125.0
+var CAR_MAX_SPEED: float = GameManager.current_car_speed
 const CAR_ACCEL: float = 18.75
 const CAR_ACCEL_TURNING: float = 93.75
 const CAR_ACCEL_BREAKING: float = 18.75
@@ -29,7 +29,6 @@ var current_speed_change: float = 0.0
 var current_target_speed: float = 0.0
 
 func _ready() -> void:
-	print(DisplayServer.window_get_size() / ConfigValues.screen_scale)
 	# get handlers
 	animation_car = $Animation_Car
 	animation_duck = animation_car.get_node('Animation_Duck')
@@ -49,7 +48,16 @@ func _ready() -> void:
 	particles_exhaust_start_y = particles_exhaust.position.y
 	animation_car.frame_changed.connect(_on_car_frame_changed)
 
+	SignalEmitter.money_collected.connect(money)
+
 	animation_car.play('default')
+
+	# handle music player
+	if not MusicPlayerMainTheme.playing:
+		MusicPlayerMainTheme.play()
+
+func money():
+	$AudioCash.play()
 
 func _on_car_frame_changed() -> void:
 	if animation_car.animation == 'default':
@@ -82,7 +90,7 @@ func _process(delta: float) -> void:
 			particles_break_front.emitting = true
 			particles_break_back.emitting = true
 
-		var current_h_speed: float = horizontal_movement * delta
+		var current_h_speed: float = horizontal_movement
 		current_speed_change = CAR_ACCEL
 		current_target_speed = CAR_MAX_SPEED * sign(horizontal_movement) * delta
 
@@ -96,7 +104,7 @@ func _process(delta: float) -> void:
 		current_movement.x = move_toward(current_movement.x, 0, CAR_ACCEL_BREAKING * delta)
 	
 	if vertical_movement:
-		var current_v_speed: float = vertical_movement * delta
+		var current_v_speed: float = vertical_movement
 		current_speed_change = CAR_ACCEL
 		current_target_speed = CAR_MAX_SPEED * sign(vertical_movement) * delta
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d4fs8kc2gskuv"]
+[gd_scene load_steps=37 format=3 uid="uid://d4fs8kc2gskuv"]
 
 [ext_resource type="Script" uid="uid://dfpdc64e6k4ls" path="res://Scripts/SceneRoad/DuckCar.gd" id="1_tw3lr"]
 [ext_resource type="Texture2D" uid="uid://cr8xgyc33otbe" path="res://Assets/Sprites/Road/DuckCar/DuckCar_accel.png" id="2_doe2q"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dwk7jysi4xorv" path="res://Assets/Sprites/Road/CarGun/CarGun4.png" id="10_pme42"]
 [ext_resource type="Texture2D" uid="uid://dtvrmmbd2g6wf" path="res://Assets/Sprites/Road/CarGun/CarGun5.png" id="11_de7sw"]
 [ext_resource type="Script" uid="uid://bsrwd81v7jdgs" path="res://Scripts/SceneRoad/CarGun.gd" id="12_ljbvg"]
+[ext_resource type="AudioStream" uid="uid://di4cak1tkofo2" path="res://Assets/Sound/Shot.mp3" id="13_tkfqb"]
+[ext_resource type="AudioStream" uid="uid://dmtknk5u0g32r" path="res://Assets/Sound/CashRegister_S08OF.38.wav" id="14_pme42"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rlqf1"]
 animations = [{
@@ -200,6 +202,9 @@ position = Vector2(11, -2)
 sprite_frames = SubResource("SpriteFrames_vcsfq")
 script = ExtResource("12_ljbvg")
 
+[node name="AudioShoot" type="AudioStreamPlayer" parent="Animation_Car/Animation_Gun"]
+stream = ExtResource("13_tkfqb")
+
 [node name="Particles_Exhaust" type="GPUParticles2D" parent="Animation_Car"]
 position = Vector2(-15, 5)
 amount = 50
@@ -227,3 +232,7 @@ visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider_DuckCar"]
 polygon = PackedVector2Array(-15, -1, -15, 6, 15, 6, 15, 5, 16, 5, 16, 1, 14, 1, 14, 0, 10, 0, 10, -1, 8, -1, 8, -2, 7, -2, 7, -3, 6, -3, 6, -4, 5, -4, 5, -5, -8, -5, -8, -4, -9, -4, -9, -3, -10, -3, -10, -1)
+
+[node name="AudioCash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_pme42")
+volume_db = -10.394

@@ -1,10 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://b27uq4ai00a8c"]
+[gd_scene load_steps=6 format=3 uid="uid://b27uq4ai00a8c"]
 
-[ext_resource type="Texture2D" uid="uid://og1q2dqkwd7o" path="res://Assets/Sprites/Road/Duck/Duck1.png" id="1_4b354"]
+[ext_resource type="FontFile" uid="uid://bb8tqj53jljn3" path="res://Fonts/EnterCommand.ttf" id="1_4b354"]
+[ext_resource type="Script" uid="uid://dhb3h0un4x186" path="res://Scripts/Mechanic/MechanicController.gd" id="1_7fi13"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7fi13"]
+line_spacing = -3.0
+font = ExtResource("1_4b354")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4b354"]
+line_spacing = -3.0
+font = ExtResource("1_4b354")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgafh"]
+line_spacing = -3.0
+font = ExtResource("1_4b354")
 
 [node name="SceneMechanic" type="Node2D"]
+script = ExtResource("1_7fi13")
+max_selection = 2
 
-[node name="Duck1" type="Sprite2D" parent="."]
-position = Vector2(112, 75)
-scale = Vector2(20, 23.1667)
-texture = ExtResource("1_4b354")
+[node name="ShopTitle" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 49.0
+offset_bottom = 27.0
+text = "MECHANIC"
+label_settings = SubResource("LabelSettings_7fi13")
+
+[node name="CurrentStats" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 15.0
+offset_right = 65.0
+offset_bottom = 38.0
+text = "Car Stats"
+label_settings = SubResource("LabelSettings_7fi13")
+
+[node name="ShopItems" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 4.0
+offset_right = 175.0
+offset_bottom = 52.0
+text = "Repair car (5$)
+Better motor (15$)
+Leave shop"
+label_settings = SubResource("LabelSettings_4b354")
+
+[node name="Description" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 64.0
+offset_right = 189.0
+offset_bottom = 106.0
+text = "\"Welcome to my workshop!\""
+label_settings = SubResource("LabelSettings_fgafh")
+autowrap_mode = 2
+
+[node name="ProgressIndicator_Line" type="Line2D" parent="."]
+points = PackedVector2Array(5, 60, 187, 60)
+width = 1.0

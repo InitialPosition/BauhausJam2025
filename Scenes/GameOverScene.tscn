@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctnnpr34enppo"]
+
+[ext_resource type="Script" uid="uid://cjh4b7eoddai8" path="res://Scripts/GameOverScene.gd" id="1_re8an"]
+[ext_resource type="FontFile" uid="uid://bb8tqj53jljn3" path="res://Fonts/EnterCommand.ttf" id="2_a74uc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bv81r"]
+font = ExtResource("2_a74uc")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gv64c"]
+line_spacing = -3.0
+font = ExtResource("2_a74uc")
+
+[node name="GameOverScene" type="Node2D"]
+script = ExtResource("1_re8an")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 14.0
+offset_right = 177.0
+offset_bottom = 23.0
+text = "GAME OVER!"
+label_settings = SubResource("LabelSettings_bv81r")
+horizontal_alignment = 1
+
+[node name="Stats" type="Label" parent="."]
+offset_left = 52.0
+offset_top = 34.0
+offset_right = 140.0
+offset_bottom = 116.0
+text = "SCORE
+0
+FINAL STAGE
+0
+
+ENTER: MAIN MENU"
+label_settings = SubResource("LabelSettings_gv64c")
+horizontal_alignment = 1

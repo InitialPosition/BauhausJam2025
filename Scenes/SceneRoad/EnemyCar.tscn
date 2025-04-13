@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dj5c0k21x4njc"]
+[gd_scene load_steps=14 format=3 uid="uid://dj5c0k21x4njc"]
 
 [ext_resource type="Script" uid="uid://djolx0hlrulrt" path="res://Scripts/SceneRoad/EnemyCar.gd" id="1_hu32a"]
 [ext_resource type="Texture2D" uid="uid://d2kyrtgous3sq" path="res://Assets/Sprites/Road/EnemyCar/EnemyCar1.png" id="2_f56s3"]
 [ext_resource type="Texture2D" uid="uid://b5tr0uo07yqbj" path="res://Assets/Sprites/Road/EnemyCar/EnemyCar2.png" id="3_aff0e"]
+[ext_resource type="AudioStream" uid="uid://d03eqjit6whye" path="res://Assets/Sound/CarHit.mp3" id="4_f56s3"]
+[ext_resource type="AudioStream" uid="uid://dby3i37m5qako" path="res://Assets/Sound/ShotEnemy.mp3" id="5_aff0e"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pctf7"]
 animations = [{
@@ -73,3 +75,11 @@ visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider_EnemyCar"]
 polygon = PackedVector2Array(-15, -1, -15, 6, 15, 6, 15, 5, 16, 5, 16, 1, 14, 1, 14, 0, 10, 0, 10, -1, 8, -1, 8, -2, 7, -2, 7, -3, 6, -3, 6, -4, 5, -4, 5, -5, -8, -5, -8, -4, -9, -4, -9, -3, -10, -3, -10, -1)
+
+[node name="CarHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f56s3")
+volume_db = -7.496
+
+[node name="CarShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_aff0e")
+volume_db = -6.559
