@@ -84,14 +84,6 @@ func _on_enemy_defeated(_new_score: int):
 func _on_player_hit():
 	hp_display.frame = GameManager.current_hp
 
-	if GameManager.current_hp == 0:
-		#$Label_StartMessage.text = "GAME OVER"
-		#$Label_StartMessage.visible = true
-		#$Label_StartMessage_BG.visible = true
-
-		if not Fade.is_fading:
-			Fade.change_scene('res://Scenes/SceneMechanic/SceneMechanic.tscn', 0.01)
-
 func _on_money_collected():
 	GameManager.current_money += 1
 	label_money.text = str(GameManager.current_money)

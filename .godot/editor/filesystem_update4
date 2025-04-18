@@ -1,0 +1,12 @@
+res://Scenes/INIT_SCENE.tscn
+res://Scenes/SceneRoad/SceneRoad.tscn
+res://Scenes/SceneRoad/DuckCar.tscn
+res://Scripts/SceneRoad/EnemyCar.gd
+res://Scripts/SceneRoad/CarGun.gd
+res://Scripts/SceneRoad/DuckCar.gd
+res://Scripts/SignalEmitter.gd
+res://Scripts/SceneRoad/BulletManager.gd
+res://Scenes/SceneRoad/BulletManager.tscn
+res://Scripts/SceneRoad/EnemySpawner.gd
+res://Scripts/SceneRoad/EnemyHeli.gd
+res://Scripts/CameraController.gd

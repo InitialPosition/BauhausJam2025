@@ -6,7 +6,7 @@ signal fullscreen_changed(is_now_fullscreen: bool)
 signal settings_saved
 signal settings_loaded
 
-signal bullet_fired
+signal bullet_fired(new_bullet: Node2D)
 
 signal enemy_defeated(score: int)
 

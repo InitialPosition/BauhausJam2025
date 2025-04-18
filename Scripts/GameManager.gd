@@ -51,7 +51,7 @@ func reset_game_manager():
 
 	current_car_speed = 80.0
 
-	current_money = 0
+	current_money = 10
 	current_hp = 5
 
 	bullet_spread = Vector2(0.2, 0.2)

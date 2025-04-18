@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duvyb24n0c4ys"]
+
+[ext_resource type="Script" uid="uid://tsgf42vq4js7" path="res://Scripts/SceneRoad/BulletManager.gd" id="1_06fd0"]
+
+[node name="BulletManager" type="Node2D"]
+script = ExtResource("1_06fd0")

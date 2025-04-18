@@ -11,7 +11,8 @@ func _ready() -> void:
 	SignalEmitter.bullet_fired.connect(shake_screen)
 	SignalEmitter.player_hit.connect(shake_screen_hard)
 
-func shake_screen(strength: float = 0.05):
+func shake_screen(_bullet: Node2D):
+	var strength = 0.05
 	if current_shake_strength < strength:
 		current_shake_strength = strength
 
@@ -27,4 +28,3 @@ func _process(delta: float) -> void:
 	
 	if current_shake_strength < 0:
 		current_shake_strength = 0
-	

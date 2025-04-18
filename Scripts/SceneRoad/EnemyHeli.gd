@@ -81,7 +81,6 @@ func _timer_move_to_new_position():
 
 func _timer_shoot_bullet():
 	var new_bullet = Bullet.instantiate()
-	add_child(new_bullet)
 
 	new_bullet.global_position = global_position
 	new_bullet.shot_parent = 'Collider_EnemyHeli'
@@ -89,6 +88,8 @@ func _timer_shoot_bullet():
 	# calculate path to player and shoot
 	var shoot_direction = GameManager.saved_player_position - new_bullet.global_position
 	new_bullet.movement_vector = shoot_direction.normalized()
+
+	SignalEmitter.bullet_fired.emit(new_bullet)
 	
 	shoot_cooldown = randf_range(2.0, 6.0)
 	shoot_timer.start(shoot_cooldown)

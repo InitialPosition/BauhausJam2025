@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4j72hwi6ddww"]
+[gd_scene load_steps=11 format=3 uid="uid://b4j72hwi6ddww"]
 
 [ext_resource type="PackedScene" uid="uid://741teimiqqf0" path="res://Scenes/SceneRoad/Street.tscn" id="1_35on0"]
 [ext_resource type="PackedScene" uid="uid://60u1vsuvb7ol" path="res://Scenes/SceneRoad/Road_GUI.tscn" id="1_gpabo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ccn2c421alkw8" path="res://Scripts/Crosshair.gd" id="5_gugwa"]
 [ext_resource type="Script" uid="uid://bvai11vfpuauq" path="res://Scripts/CameraController.gd" id="6_gugwa"]
 [ext_resource type="PackedScene" uid="uid://cy7t66mlrxxb6" path="res://Scenes/SceneRoad/EnemySpawner.tscn" id="7_gpabo"]
+[ext_resource type="PackedScene" uid="uid://duvyb24n0c4ys" path="res://Scenes/SceneRoad/BulletManager.tscn" id="8_gpabo"]
 
 [sub_resource type="Gradient" id="Gradient_gpabo"]
 colors = PackedColorArray(0.704742, 0.00111856, 0.816453, 1, 1, 0.625568, 0.217406, 1)
@@ -41,3 +42,5 @@ position = Vector2(95.5, 53)
 scale = Vector2(3.17188, 1.90625)
 energy = 0.2
 texture = SubResource("GradientTexture2D_p2loc")
+
+[node name="BulletManager" parent="." instance=ExtResource("8_gpabo")]

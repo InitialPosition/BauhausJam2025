@@ -10,7 +10,6 @@ const UP_BULLET_VECTOR: Vector2 = Vector2(0, -1)
 const UPR_BULLET_VECTOR: Vector2 = Vector2(1, -1)
 const R_BULLET_VECTOR: Vector2 = Vector2(1, 0)
 
-var current_bullet_vector: Vector2 = Vector2.ZERO
 var current_bullet_spread: Vector2 = GameManager.bullet_spread
 var current_bullet_firing_speed: float = GameManager.bullet_firing_speed
 
@@ -29,40 +28,38 @@ func _process(_delta: float) -> void:
 	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
 	var angle_to_mouse = get_angle_to(mouse_pos)
 
-	# stop if mouse is under car
-	#if sign(angle_to_mouse) > 0:
-#		return
-
-	# iterate over all angles and find which one is closest to the mouse angle
-	var best_match: float = INF
-	var best_direction: float = INF
-	for current_direction in [UPL_DIRECTION, UP_DIRECTION, UPR_DIRECTION, R_DIRECTION]:
-		var abs_angle: float = abs(abs(angle_to_mouse) - current_direction)
-		if abs_angle < best_match:
-			best_match = abs_angle
-			best_direction = current_direction
-
-	# set the animation frame based on which direction fits best
-	match best_direction:
-		UPL_DIRECTION:
-			current_bullet_vector = UPL_BULLET_VECTOR
-			frame = 3
-		UP_DIRECTION:
-			current_bullet_vector = UP_BULLET_VECTOR
-			frame = 2
-		UPR_DIRECTION:
-			current_bullet_vector = UPR_BULLET_VECTOR
-			frame = 1
-		R_DIRECTION:
-			current_bullet_vector = R_BULLET_VECTOR
+	# if mouse is under car, set hard left or hard right
+	if sign(angle_to_mouse) > 0:
+		if angle_to_mouse < PI / 2:
 			frame = 0
+		else:
+			frame = 4
+	else:
+		# iterate over all angles and find which one is closest to the mouse angle
+		var best_match: float = INF
+		var best_direction: float = INF
+		for current_direction in [UPL_DIRECTION, UP_DIRECTION, UPR_DIRECTION, R_DIRECTION]:
+			var abs_angle: float = abs(abs(angle_to_mouse) - current_direction)
+			if abs_angle < best_match:
+				best_match = abs_angle
+				best_direction = current_direction
+
+		# set the animation frame based on which direction fits best
+		match best_direction:
+			UPL_DIRECTION:
+				frame = 3
+			UP_DIRECTION:
+				frame = 2
+			UPR_DIRECTION:
+				frame = 1
+			R_DIRECTION:
+				frame = 0
 
 func _on_bullet_timer_timeout():
 	$AudioShoot.pitch_scale = randf_range(0.9, 1.1)
 	$AudioShoot.play()
 	
 	var new_bullet = Bullet.instantiate()
-	add_child(new_bullet)
 
 	new_bullet.is_player_bullet = true
 	new_bullet.global_position = global_position
@@ -78,7 +75,7 @@ func _on_bullet_timer_timeout():
 	
 	new_bullet.movement_vector = bullet_movement
 
-	SignalEmitter.bullet_fired.emit()
+	SignalEmitter.bullet_fired.emit(new_bullet)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

@@ -21,7 +21,7 @@ var current_helis: int = 0
 
 var Money: Resource = preload('res://Scenes/SceneRoad/Money.tscn')
 var money_timer: Timer
-var money_speed: float = 10.0
+var money_speed: float = 7.0
 
 func _ready() -> void:
 	timer_spawn_car = Timer.new()
@@ -51,7 +51,6 @@ func _spawn_enemy_car():
 	if current_cars >= MAX_CARS:
 		return
 
-	print('Spawning car')
 	# find place to spawn car
 	var spawn_location = CAR_SPAWN_LOCATIONS.pick_random()
 	var new_car = EnemyCar.instantiate()
@@ -68,7 +67,6 @@ func _spawn_enemy_heli():
 	if current_helis >= MAX_HELIS:
 		return
 
-	print('Spawning heli')
 	# find place to spawn heli
 	var spawn_location = HELI_SPAWN_LOCATIONS.pick_random()
 	var new_heli = EnemyHeli.instantiate()

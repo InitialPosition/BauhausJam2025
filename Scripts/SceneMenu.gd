@@ -10,7 +10,7 @@ func _ready() -> void:
 	if MusicPlayerMainTheme.playing:
 		MusicPlayerMainTheme.stop()
 	
-	if not MusicPlayerMainTheme.playing:
+	if not MusicPlayerMainMenu.playing:
 		MusicPlayerMainMenu.play()
 
 	version_string.text = "v." + str(ProjectSettings.get_setting("application/config/version"))

@@ -18,8 +18,8 @@ var new_position_duration: float
 
 const CAR_SPEED: float = 75.0
 
-var CAR_X_BOUNDARIES: Vector2 = Vector2(15, DisplayServer.window_get_size().x / ConfigValues.screen_scale - 15)
-var CAR_Y_BOUNDARIES: Vector2 = Vector2(48, DisplayServer.window_get_size().y / ConfigValues.screen_scale - 25)
+var CAR_X_BOUNDARIES: Vector2 = Vector2(16, DisplayServer.window_get_size().x / ConfigValues.screen_scale - 15)
+var CAR_Y_BOUNDARIES: Vector2 = Vector2(48, DisplayServer.window_get_size().y / ConfigValues.screen_scale - 8)
 
 var shoot_timer: Timer
 var shoot_cooldown: float
@@ -66,9 +66,9 @@ func set_target_position(new_pos: Vector2):
 	target_position = new_pos
 
 func generate_new_target_position() -> Vector2:
-	var random_new_x: int = randi_range(CAR_X_BOUNDARIES.x, CAR_X_BOUNDARIES.y)
-	var random_new_y: int = randi_range(CAR_Y_BOUNDARIES.x, CAR_Y_BOUNDARIES.y)
-	var new_target: Vector2 = Vector2(random_new_x, random_new_y)
+	var random_new_x: int = randi_range(CAR_X_BOUNDARIES.x, CAR_X_BOUNDARIES.y)# * ConfigValues.screen_scale)
+	var random_new_y: int = randi_range(CAR_Y_BOUNDARIES.x, CAR_Y_BOUNDARIES.y)# * ConfigValues.screen_scale)
+	var new_target: Vector2i = Vector2i(random_new_x, random_new_y)
 
 	return new_target
 
@@ -87,7 +87,6 @@ func _timer_shoot_bullet():
 	$CarShoot.play()
 
 	var new_bullet = Bullet.instantiate()
-	add_child(new_bullet)
 
 	new_bullet.global_position = global_position
 	new_bullet.shot_parent = 'Collider_EnemyCar'
@@ -101,6 +100,8 @@ func _timer_shoot_bullet():
 	
 	shoot_cooldown = randf_range(5.0, 12.0)
 	shoot_timer.start(shoot_cooldown)
+
+	SignalEmitter.bullet_fired.emit(new_bullet)
 
 func _on_car_frame_changed() -> void:
 	if animation_car.animation == 'default':
